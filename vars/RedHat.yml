@@ -1,0 +1,5 @@
+---
+packages_to_remove: []
+files_to_remove: []
+users_to_remove:
+  - zabbix

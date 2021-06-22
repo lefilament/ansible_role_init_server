@@ -1,0 +1,6 @@
+---
+host_user: testuser
+host_password: testusernotsocomplicatedpassword
+ssh_public_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK0wmN/Cr3JXqmLW7u+g9pTh+wyqDHpSQEIQczXkVx9q testuser
+default_sshd_port: 10022
+host_admin_user: root

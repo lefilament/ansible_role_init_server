@@ -1,0 +1,19 @@
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin{% if inventory_hostname in groups.gitlab %}:/opt/gitlab/embedded/bin{% endif %}"
+
+root    ALL=(ALL:ALL) ALL
+
+{% if host_admin_user != 'root' %}
+{{ host_admin_user }} ALL=(ALL) ALL
+{% endif %}
+
+{{ host_user }} ALL=(ALL) ALL
+{% if host_user2 is defined %}{{ host_user2 }} ALL=(ALL) ALL{% endif %}
+
+nagios ALL=NOPASSWD: /usr/bin/fail2ban-client status
+nagios ALL=NOPASSWD: /usr/bin/fail2ban-client status *
+nagios ALL=NOPASSWD: /usr/bin/fail2ban-client get * banip
+nagios ALL=NOPASSWD: /usr/bin/fail2ban-client get * banip --with-time
+nagios ALL=NOPASSWD: /usr/bin/fail2ban-client get * bantime
+{% if inventory_hostname in groups.gitlab %}nagios ALL=NOPASSWD: /opt/gitlab/bin/gitlab-ctl status{% endif %}
