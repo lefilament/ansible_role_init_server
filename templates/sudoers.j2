@@ -16,4 +16,7 @@ nagios ALL=NOPASSWD: /usr/bin/fail2ban-client status *
 nagios ALL=NOPASSWD: /usr/bin/fail2ban-client get * banip
 nagios ALL=NOPASSWD: /usr/bin/fail2ban-client get * banip --with-time
 nagios ALL=NOPASSWD: /usr/bin/fail2ban-client get * bantime
+nagios ALL=NOPASSWD: /usr/bin/docker ps --format {{ '{{' }}.Names{{ '}}' }} --filter name=* --no-trunc --quiet --all
+nagios ALL=NOPASSWD: /usr/bin/docker ps --format {{ '{{' }}.Names{{ '}}' }} --filter name=* --no-trunc --quiet
+nagios ALL=NOPASSWD: /usr/bin/docker stats --format {{ '{{' }}.Name{{ '}}' }}\:{{ '{{' }}.CPUPerc{{ '}}' }}\:{{ '{{' }}.MemPerc{{ '}}' }} --no-stream
 {% if inventory_hostname in groups.gitlab %}nagios ALL=NOPASSWD: /opt/gitlab/bin/gitlab-ctl status{% endif %}
