@@ -1,16 +1,18 @@
 ---
 packages_to_remove:
-  - samba*
-  - snapd
-  - unattended-upgrades
-  - popularity-contest
-  - ubuntu-advantage-tools
+    - samba*
+    - snapd
+    - popularity-contest
+    - ubuntu-advantage-tools
 files_to_remove:
-  - /etc/dhcp/dhclient-enter-hooks.d/samba
-  - /root/snap
-  - /home/{{ host_user }}/snap
-  - /snap
-  - /var/snap
-  - /var/lib/snapd
+    - /etc/dhcp/dhclient-enter-hooks.d/samba
+    - /root/snap
+    - /home/{{ host_user }}/snap
+    - /snap
+    - /usr/games
+    - /usr/local/games
+    - /var/cache/snapd
+    - /var/snap
+    - /var/lib/snapd
 users_to_remove:
-  - zabbix
+    - zabbix

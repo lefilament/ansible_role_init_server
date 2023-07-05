@@ -1,0 +1,14 @@
+network:
+    version: 2
+    ethernets:
+        {{ ansible_default_ipv4.interface }}:
+            dhcp6: no
+            match:
+              name: {{ ansible_default_ipv4.interface }}
+            addresses:
+              - {{ ipv6_address }}
+            routes:
+              - to: {{ ipv6_gateway }}
+                scope: link
+              - to: ::/0
+                via: {{ ipv6_gateway }}

@@ -1,4 +1,25 @@
 ---
 
-- name: restart-sshd
-  service: name=sshd state=restarted
+- name: Restart SSHD
+  ansible.builtin.service:
+      name: ssh
+      state: restarted
+
+- name: Restart cron
+  ansible.builtin.service:
+      name: cron
+      state: restarted
+
+- name: Restart apt-update-timer
+  ansible.builtin.systemd:
+      name: apt-daily.timer
+      daemon_reload: true
+      state: restarted
+      enabled: true
+
+- name: Restart apt-upgrade-timer
+  ansible.builtin.systemd:
+      name: apt-daily-upgrade.timer
+      daemon_reload: true
+      state: restarted
+      enabled: true

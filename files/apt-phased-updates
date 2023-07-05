@@ -1,0 +1,2 @@
+Update-Manager::Never-Include-Phased-Updates true;
+APT::Get::Never-Include-Phased-Updates true;
